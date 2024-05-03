@@ -1,0 +1,183 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+}
+
+.rolBox {
+    padding: 20px;
+}
+
+.rols {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: rgb(216, 216, 216);
+    padding: 10px;
+    border: 1px solid rgb(141, 137, 137);
+}
+
+.rols h3 {
+    padding: 0px;
+    margin: 5px;
+}
+
+.rols span {
+    padding: 0px;
+    margin: 5px;
+}
+
+.test {
+    display: flex;
+}
+
+.text {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 80vh;
+    padding-right: 10px;
+    line-height: 1.5;
+
+}
+
+.questionBox {
+    display: flex;
+    width: 50%;
+    overflow-y: scroll;
+    flex-direction: column;
+    height: 80vh;
+    padding-left: 10px;
+    border-left: 1px solid;
+    line-height: 2;
+}
+.questionBox::-webkit-scrollbar{
+    width: 10px;
+}
+.questionBox::-webkit-scrollbar-track{
+    background: rgb(218, 218, 218);
+    border-radius: 5px;
+}
+.questionBox::-webkit-scrollbar-thumb{
+    background: rgb(85, 105, 114);
+    border-radius: 5px;
+}
+.questionBox::-webkit-scrollbar-thumb:hover{
+    background: cadetblue;
+}
+.text::-webkit-scrollbar{
+    width: 10px;
+}
+.text::-webkit-scrollbar-track{
+    background: rgb(218, 218, 218);
+    border-radius: 5px;
+}
+.text::-webkit-scrollbar-thumb{
+    background: rgb(85, 105, 114);
+    border-radius: 5px;
+}
+.text::-webkit-scrollbar-thumb:hover{
+    background: cadetblue;
+}
+
+.true-false {
+    display: flex;
+    flex-direction: column;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.questionHeader {
+    display: flex;
+}
+
+.questionInner {
+    display: flex;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputQuestions {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputQuestionsInner {
+    display: flex;
+
+}
+
+.pageintion {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+   
+}
+
+
+.pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.active h2 {
+    border-top: 2px solid grey;
+    margin-right: 15px;
+    padding-top: 8px;
+}
+
+.qstNumber {
+    border-top: 2px solid grey;
+    padding-top: 8px;
+    padding-left: 5px;
+    cursor: default;
+}
+
+.leftHeader h2 {
+    color: red;
+    font-weight: bolder;
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.active a{
+    text-decoration: none;
+    color: black;
+}
+
+#context-menu {
+    position: absolute;
+    display: none;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+
+  #highlightButton{
+    display: none;
+  }

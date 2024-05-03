@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .span {
+            padding: 5px;
+            background-color: lightblue;
+            cursor: move;
+        }
+
+        .Answer {
+            width: 100px;
+            height: 30px;
+            background-color: red;
+        }
+
+        .zooooone div {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .zooooone {
+            display: flex;
+
+            gap: 1rem;
+        }
+
+        #AnswerBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="AnswerBox" style="width:100% ; height: 20svh; background-color: gray;">
+        <span class="span" id="1" draggable="true">Abdol</span>
+        <span class="span" id="2" draggable="true">Abbas</span>
+        <span class="span" id="3" draggable="true">Shabdol</span>
+        <span class="span" id="4" draggable="true">oskol</span>
+    </div>
+
+
+
+    <div class="zooooone" id="parentAnswer">
+        <div id="Answer" class="Answer"></div>
+        <div id="Answer" class="Answer"></div>
+        <div id="Answer" class="Answer"></div>
+        <div id="Answer" class="Answer"></div>
+    </div>
+
+    <input type="hidden" id="zooooone">
+    <script>
+
+        var spans = document.getElementById("AnswerBox");
+        var dropZone = document.querySelectorAll(".Answer");
+        var AnswerId = document.getElementById("zooooone");
+        var draggedSpan = null;
+        var parentAnswer = document.getElementById("parentAnswer");
+
+        var dropedZones = document.querySelectorAll(".Answer");
+        var spanInner = null;
+        document.addEventListener('DOMContentLoaded', (e) => {
+            for (let i = 0; i < dropedZones.length; i++) {
+                spanInner = document.createElement("span");
+                spanInner.innerHTML = i + 1;
+                dropedZones[i].appendChild(spanInner);
+            }
+        })
+        function dragStart(e) {
+            for (let item of spans.children) {
+                item.ondragstart = (e) => {
+                    draggedSpan = e.target;
+                    console.log(draggedSpan);
+                }
+            }
+        }
+        dragStart();
+        dropedZones.forEach(Zone => {
+            Zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+            });
+
+            Zone.addEventListener('drop', (e) => {
+                if ((Zone.children.length == 1 && Zone.firstChild.innerHTML.length == 1) || Zone.children.length == 0) {
+                    Zone.innerHTML = "";
+                    Zone.appendChild(draggedSpan);
+                    for (let i = 0; i < dropZone.length; i++) {
+                        if (dropZone[i].children.length == 0) {
+                            spanInner = document.createElement("span");
+                            spanInner.innerHTML = i + 1;
+                            dropZone[i].appendChild(spanInner);
+                        }
+                        AnswerId.value = "";
+                    }
+                    AnswerId.value = draggedSpan.id;
+                }
+                else {
+                    spans.appendChild(Zone.firstChild);
+                    Zone.innerHTML = "";
+                    Zone.appendChild(draggedSpan);
+                    for (let i = 0; i < dropZone.length; i++) {
+                        if (dropZone[i].children.length == 0) {
+                            spanInner = document.createElement("span");
+                            spanInner.innerHTML = i + 1;
+                            dropZone[i].appendChild(spanInner);
+                        }
+                    }
+                    AnswerId.value = draggedSpan.id;
+                }
+
+            })
+        })
+        document.addEventListener("dragover", (e) => {
+            if (draggedSpan) {
+                e.preventDefault();
+            }
+        })
+
+        document.addEventListener("drop", (e) => {
+            e.preventDefault();
+            if (draggedSpan) {
+
+                if (e.target.id === "Answer") {
+                }
+                else {
+                    spans.appendChild(draggedSpan);
+                    for (let i = 0; i < dropZone.length; i++) {
+                        if (dropZone[i].children.length == 0) {
+                            spanInner = document.createElement("span");
+                            spanInner.innerHTML = i + 1;
+                            dropZone[i].appendChild(spanInner);
+                        }
+                    }
+                }
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

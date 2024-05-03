@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <style>
+    .highlight {
+  background-color: yellow;
+}
+    </style>
+
+</head>
+
+<body>
+    <div id="myDiv">
+        <p id="paragraph1">This is the first paragraph.</p>
+        <p id="paragraph2">This is the second paragraph.</p>
+        <p id="paragraph3">This is the third paragraph.</p>
+      </div>
+    <script>
+ // Add event listener to the div
+document.getElementById("myDiv").addEventListener("contextmenu", highlightText);
+
+// Function to highlight the selected text
+function highlightText(e) {
+  e.preventDefault(); // Disable default context menu
+
+  var selectedText = window.getSelection().toString();
+
+  // Check if there's any selected text
+  if (selectedText !== "") {
+    var paragraphs = document.getElementById("myDiv").getElementsByTagName("p");
+
+    // Loop through each paragraph and wrap the selected text with a <span> element
+    for (var i = 0; i < paragraphs.length; i++) {
+      var text = paragraphs[i].innerHTML;
+      var highlightedText = "<span class='highlight'>" + selectedText + "</span>";
+      paragraphs[i].innerHTML = text.replace(new RegExp(selectedText, "g"), highlightedText);
+    }
+  }
+}
+    </script>
+</body>
+
+</html>
